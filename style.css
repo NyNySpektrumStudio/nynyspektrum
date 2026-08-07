@@ -154,4 +154,58 @@ nav{
 .hero-button{
     display:inline-block;
     padding:15px 35px;
+    background:#ff4fd8;
+    color:#fff;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.hero-button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(255,79,216,.35);
+}
+
+/* ========= FOOTER ========= */
+
+footer{
+    background:#080812;
+    text-align:center;
+    padding:40px 20px;
+    color:#bfbfbf;
+}
+
+/* ========= MOBILE ========= */
+
+@media (max-width:768px){
+
+.hero-content h1{
+    font-size:2.5rem;
+}
+
+.hero-content p{
+    font-size:1rem;
+}
+
+.about h2,
+.cta h2{
+    font-size:2rem;
+}
+
+nav{
+    flex-direction:column;
+    gap:20px;
+}
+
+.features{
+    grid-template-columns:1fr;
+}
+
+.hero-button,
+.nav-btn{
+    padding:12px 24px;
+}
+
+}
    
