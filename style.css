@@ -88,6 +88,68 @@ nav{
     opacity:.9;
     margin-bottom:35px;
 }
+/* ========= ABOUT ========= */
+
+.about{
+    background:#111122;
+    padding:100px 10%;
+    text-align:center;
+}
+
+.about h2{
+    font-size:2.6rem;
+    margin-bottom:25px;
+}
+
+.about p{
+    max-width:900px;
+    margin:auto;
+    color:#d8d8d8;
+}
+
+.features{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:#1d1d33;
+    padding:35px;
+    border-radius:18px;
+    transition:.35s;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+    background:#28284a;
+}
+
+.feature-card h3{
+    margin-bottom:15px;
+    color:#ff7ce9;
+}
+
+/* ========= CTA ========= */
+
+.cta{
+    padding:120px 10%;
+    text-align:center;
+    background:linear-gradient(135deg,#3c0066,#660099);
+}
+
+.cta h2{
+    font-size:2.8rem;
+    margin-bottom:25px;
+}
+
+.cta p{
+    max-width:800px;
+    margin:auto;
+    margin-bottom:40px;
+    color:#f3f3f3;
+}
 
 .hero-button{
     display:inline-block;
