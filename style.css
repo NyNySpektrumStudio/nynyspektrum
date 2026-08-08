@@ -1207,3 +1207,37 @@ iframe {
         text-align: center !important;
     }
 }   
+/* =========================================================
+   NyNySpektrum™ — STEP 14
+   MOBILE HERO SPACING REFINEMENT
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Tighten the space below the hero button */
+    .hero-content {
+        padding-bottom: 20px !important;
+    }
+
+    /* Bring the Explore portal closer to the hero */
+    .final-portal {
+        margin-top: -45px !important;
+        margin-bottom: -10px !important;
+        height: 125px !important;
+    }
+
+    /* Keep the portal perfectly centered */
+    .final-portal .portal-container {
+        margin: 0 !important;
+    }
+
+    /* Keep Explore label attached naturally to the portal */
+    .final-portal .portal-core span {
+        top: 44px !important;
+    }
+
+    /* Pull the next section slightly closer */
+    #about {
+        margin-top: 0 !important;
+    }
+}
