@@ -1292,3 +1292,35 @@ iframe {
         transform: none !important;
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 17
+   MOBILE SERVICES SECTION REFINEMENT
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Give the Services section a clean entrance */
+    .features {
+        margin-top: 35px !important;
+        padding-bottom: 40px !important;
+    }
+
+    /* Keep service cards comfortably sized on mobile */
+    .feature-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 28px !important;
+    }
+
+    /* Improve service-card heading spacing */
+    .feature-card h3 {
+        margin-bottom: 12px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* Improve service-card paragraph readability */
+    .feature-card p {
+        line-height: 1.6 !important;
+        margin-bottom: 0 !important;
+    }
+}
