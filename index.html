@@ -3,69 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030609">
 
     <title>NyNySpektrum™ | Engineering Tomorrow's Digital Reality</title>
 
     <meta name="description"
           content="NyNySpektrum™ — Creative Technology Studio engineering tomorrow's digital reality through AI, web design, digital products, creative technology and innovation.">
 
-    <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="background-layer" aria-hidden="true"></div>
+    <div class="particles" aria-hidden="true"></div>
 
-    <!-- =========================================
-         CINEMATIC BACKGROUND
-    ========================================== -->
-
-    <div class="background-layer"></div>
-    <div class="particles"></div>
-
-
-    <!-- =========================================
-         NAVIGATION
-    ========================================== -->
-
-    <nav>
-
-        <div class="logo">
+    <nav class="site-nav">
+        <a href="#home" class="logo" aria-label="NyNySpektrum home">
             NyNySpektrum<span>™</span>
-        </div>
+        </a>
 
         <div class="nav-links">
-
             <a href="#home">Home</a>
-
             <a href="#about">About</a>
-
             <a href="#services">Services</a>
-
             <a href="#roadmap">Roadmap</a>
-
         </div>
-
     </nav>
 
-
-    <!-- =========================================
-         HOME / ENTRY PORTAL
-    ========================================== -->
-
     <main id="home">
-
+        <!-- HERO -->
         <section class="hero">
-
             <div class="hero-content">
-
-                <div class="hero-kicker">
-                    CREATIVE TECHNOLOGY STUDIO
-                </div>
+                <div class="hero-kicker">CREATIVE TECHNOLOGY STUDIO</div>
 
                 <h1>
                     ENGINEERING
@@ -79,23 +53,190 @@
                 </p>
 
                 <div class="hero-actions">
-
-                    <a href="#about" class="hero-button">
-                        ENTER THE SPECTRUM
-                    </a>
-
+                    <a href="#about" class="hero-button">ENTER THE SPECTRUM</a>
                 </div>
-
             </div>
 
-
-            <!-- FUTURISTIC PORTAL -->
-
-            <div class="portal-container">
-
+            <!-- HERO PORTAL: stays in normal document flow -->
+            <a href="#about" class="portal-container hero-portal" aria-label="Explore NyNySpektrum">
                 <div class="portal-ring portal-ring-outer"></div>
-
                 <div class="portal-ring portal-ring-middle"></div>
+                <div class="portal-ring portal-ring-inner"></div>
+                <div class="portal-core">
+                    <span>EXPLORE</span>
+                </div>
+            </a>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about section-shell">
+            <div class="section-heading">
+                <div class="section-kicker">ENTER THE SPECTRUM</div>
+                <h2>
+                    Where Creativity
+                    <span>Meets Technology</span>
+                </h2>
+            </div>
+
+            <p class="section-text">
+                NyNySpektrum™ is a Creative Technology Studio
+                focused on transforming ideas into powerful digital
+                realities.
+                From artificial intelligence and website design
+                to digital products, branding, creative media and
+                emerging technologies — we engineer experiences
+                designed for tomorrow.
+            </p>
+
+            <a href="#services" class="section-portal" aria-label="Enter services">
+                <span class="portal-mini" aria-hidden="true"></span>
+                <span>ENTER SERVICES</span>
+            </a>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="services section-shell">
+            <div class="section-heading">
+                <div class="section-kicker">DIGITAL WORLDS</div>
+                <h2>
+                    What We
+                    <span>Build</span>
+                </h2>
+            </div>
+
+            <div class="service-grid">
+                <article class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Intelligent tools, AI-powered experiences, automation and digital assistants.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-number">02</div>
+                    <h3>Website Design</h3>
+                    <p>Professional, modern websites designed for small businesses, creators and brands.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Digital Products</h3>
+                    <p>Creative digital assets, downloadable products and innovative online experiences.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-number">04</div>
+                    <h3>Creative Media</h3>
+                    <p>Visual storytelling, video creation, digital art and cinematic experiences.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-number">05</div>
+                    <h3>Print on Demand</h3>
+                    <p>Original designs transformed into physical products and creative collections.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-number">06</div>
+                    <h3>Future Technologies</h3>
+                    <p>Exploring emerging tools and technologies that can shape the next generation of digital experiences.</p>
+                </article>
+            </div>
+
+            <a href="#roadmap" class="section-portal" aria-label="Enter roadmap">
+                <span class="portal-mini" aria-hidden="true"></span>
+                <span>ENTER THE ROADMAP</span>
+            </a>
+        </section>
+
+        <!-- ROADMAP -->
+        <section id="roadmap" class="roadmap section-shell">
+            <div class="section-heading">
+                <div class="section-kicker">THE JOURNEY AHEAD</div>
+                <h2>
+                    NyNySpektrum™
+                    <span>Roadmap</span>
+                </h2>
+            </div>
+
+            <div class="roadmap-list">
+                <article class="roadmap-item">
+                    <span class="roadmap-number">01</span>
+                    <div>
+                        <h3>Digital Design Studio</h3>
+                        <p>Build professional websites and digital experiences for businesses and creators.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">02</span>
+                    <div>
+                        <h3>AI &amp; Automation</h3>
+                        <p>Develop practical AI-powered tools, assistants and automated digital systems.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">03</span>
+                    <div>
+                        <h3>Digital Products</h3>
+                        <p>Create and sell digital assets, templates, graphics and creative resources.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">04</span>
+                    <div>
+                        <h3>Print on Demand</h3>
+                        <p>Build original product collections and establish multiple POD revenue streams.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">05</span>
+                    <div>
+                        <h3>Creative Video Universe</h3>
+                        <p>Create original cinematic videos, visual stories and premium media.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">06</span>
+                    <div>
+                        <h3>NyNySpektrum™ Media Marketplace</h3>
+                        <p>A future platform where original videos, creative works and premium digital content can be offered for purchase.</p>
+                    </div>
+                </article>
+
+                <article class="roadmap-item">
+                    <span class="roadmap-number">07</span>
+                    <div>
+                        <h3>Global Creative Technology Brand</h3>
+                        <p>Grow NyNySpektrum™ across social media, digital commerce, technology and creative industries.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- FINAL PORTAL: deliberately in normal flow after ALL roadmap items -->
+            <div class="final-portal">
+                <a href="#home" class="portal-container" aria-label="Return to top">
+                    <div class="portal-ring portal-ring-outer"></div>
+                    <div class="portal-ring portal-ring-middle"></div>
+                    <div class="portal-ring portal-ring-inner"></div>
+                    <div class="portal-core">
+                        <span>THE FUTURE</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">NyNySpektrum<span>™</span></div>
+        <p>Engineering Tomorrow's Digital Reality.</p>
+        <p class="copyright">© 2026 NyNySpektrum™. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
 
                 <div class="portal-ring portal-ring-inner"></div>
 
