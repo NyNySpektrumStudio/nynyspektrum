@@ -1274,3 +1274,21 @@ iframe {
         top: 44px !important;
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 16
+   FINAL PORTAL VERTICAL POSITION
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Move the complete Explore portal upward
+       without disturbing its internal alignment */
+    .final-portal {
+        transform: translateY(-110px) !important;
+    }
+
+    /* Preserve perfect portal centering */
+    .final-portal .portal-container {
+        transform: none !important;
+    }
+}
