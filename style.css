@@ -1,106 +1,604 @@
-/* ========= RESET ========= */
+/* =========================================================
+   NyNySpektrum™
+   Creative Technology Studio
+   Version 2.0
+   ========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ---------- FOUNDATION ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#090914;
-    color:#fff;
-    line-height:1.7;
+body {
+    background: #050608;
+    color: #f4f4f4;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
 }
 
-/* ========= HERO ========= */
 
-.hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    overflow:hidden;
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
     background:
-    linear-gradient(135deg,#11112b,#300048,#5f1278);
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(0, 232, 255, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(110, 10, 40, 0.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(68, 37, 20, 0.30),
+            transparent 32%
+        ),
+        #050608;
 }
 
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.45);
+
+/* ---------- CINEMATIC BACKGROUND ---------- */
+
+.background-layer {
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 20%,
+            rgba(0, 232, 255, 0.05) 45%,
+            transparent 65%
+        ),
+        linear-gradient(
+            300deg,
+            rgba(58, 6, 24, 0.28),
+            transparent 45%,
+            rgba(68, 37, 20, 0.18)
+        );
+
+    filter: blur(20px);
+
+    animation: backgroundDrift 14s ease-in-out infinite alternate;
 }
 
-nav{
-    position:absolute;
-    top:30px;
-    left:8%;
-    right:8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:2;
+
+@keyframes backgroundDrift {
+
+    0% {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(2%, 2%, 0) scale(1.08);
+    }
 }
 
-.logo{
-    font-size:1.7rem;
-    font-weight:700;
+
+/* ---------- CYAN LIGHT ---------- */
+
+.gradient-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 70%,
+            rgba(0, 232, 255, 0.08),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(5, 6, 8, 0.15),
+            rgba(5, 6, 8, 0.85)
+        );
 }
 
-.logo span{
-    color:#7be3ff;
+
+/* ---------- PARTICLES ---------- */
+
+.particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.75) 1px,
+            transparent 1px
+        );
+
+    background-size: 120px 120px;
+
+    opacity: 0.20;
+
+    animation: particlesMove 18s linear infinite;
 }
 
-.nav-btn{
-    text-decoration:none;
-    color:#fff;
-    border:2px solid #fff;
-    padding:10px 24px;
-    border-radius:40px;
-    transition:.3s;
+
+@keyframes particlesMove {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 120px 120px;
+    }
 }
 
-.nav-btn:hover{
-    background:#fff;
-    color:#111;
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    position: relative;
+    z-index: 5;
+
+    width: min(1200px, 90%);
+    margin: auto;
+
+    padding-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:850px;
-    padding:20px;
+
+.logo {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: #f4f4f4;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.4),
+        0 0 20px rgba(0,232,255,0.25);
 }
 
-.hero-content h1{
-    font-size:4rem;
-    margin-bottom:20px;
+
+.logo span {
+    color: #00e8ff;
+
+    text-shadow:
+        0 0 8px #00e8ff,
+        0 0 20px rgba(0,232,255,0.7),
+        0 0 40px rgba(0,232,255,0.35);
 }
 
-.hero-content p{
-    font-size:1.15rem;
-    opacity:.9;
-    margin-bottom:35px;
-}
-/* ========= ABOUT ========= */
 
-.about{
-    background:#111122;
-    padding:100px 10%;
-    text-align:center;
+.nav-button {
+    display: inline-block;
+
+    padding: 10px 24px;
+
+    border: 1px solid rgba(0,232,255,0.7);
+    border-radius: 40px;
+
+    color: #f4f4f4;
+    text-decoration: none;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+
+    background: rgba(0, 232, 255, 0.04);
+
+    box-shadow:
+        inset 0 0 15px rgba(0,232,255,0.04),
+        0 0 15px rgba(0,232,255,0.12);
+
+    transition: 0.35s ease;
 }
 
-.about h2{
-    font-size:2.6rem;
-    margin-bottom:25px;
+
+.nav-button:hover {
+    color: #050608;
+    background: #00e8ff;
+
+    box-shadow:
+        0 0 15px #00e8ff,
+        0 0 40px rgba(0,232,255,0.5);
+
+    transform: translateY(-2px);
 }
 
+
+/* ---------- HERO CONTENT ---------- */
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+
+    width: min(1000px, 90%);
+
+    min-height: calc(100vh - 100px);
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding-bottom: 100px;
+}
+
+
+.studio {
+    margin-bottom: 22px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(0.7rem, 2vw, 1rem);
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #00e8ff;
+
+    text-shadow:
+        0 0 8px rgba(0,232,255,0.8),
+        0 0 20px rgba(0,232,255,0.4);
+}
+
+
+/* ---------- MAIN TITLE ---------- */
+
+.hero h1 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(3rem, 9vw, 8rem);
+
+    line-height: 0.95;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.8),
+        0 0 15px rgba(0,232,255,0.35),
+        0 0 40px rgba(0,232,255,0.18);
+
+    animation: titleGlow 4s ease-in-out infinite alternate;
+}
+
+
+@keyframes titleGlow {
+
+    from {
+        text-shadow:
+            0 0 5px rgba(255,255,255,0.7),
+            0 0 15px rgba(0,232,255,0.25),
+            0 0 35px rgba(0,232,255,0.10);
+    }
+
+    to {
+        text-shadow:
+            0 0 8px rgba(255,255,255,1),
+            0 0 22px rgba(0,232,255,0.55),
+            0 0 55px rgba(0,232,255,0.25);
+    }
+}
+
+
+/* ---------- HERO DESCRIPTION ---------- */
+
+.hero-text {
+    max-width: 760px;
+
+    margin-top: 32px;
+
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+
+    line-height: 1.8;
+
+    color: rgba(244,244,244,0.78);
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ---------- HERO BUTTON ---------- */
+
+.hero-button {
+    position: relative;
+
+    display: inline-block;
+
+    margin-top: 38px;
+
+    padding: 16px 36px;
+
+    border: 1px solid #00e8ff;
+    border-radius: 50px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,232,255,0.14),
+            rgba(58,6,24,0.35)
+        );
+
+    box-shadow:
+        0 0 10px rgba(0,232,255,0.45),
+        0 0 30px rgba(0,232,255,0.15),
+        inset 0 0 20px rgba(0,232,255,0.08);
+
+    transition: 0.4s ease;
+
+    overflow: hidden;
+}
+
+
+.hero-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: 0.7s ease;
+}
+
+
+.hero-button:hover::before {
+    left: 120%;
+}
+
+
+.hero-button:hover {
+    color: #050608;
+
+    background: #00e8ff;
+
+    box-shadow:
+        0 0 15px #00e8ff,
+        0 0 45px rgba(0,232,255,0.65);
+
+    transform: translateY(-4px);
+}
+
+
+/* ---------- FUTURISTIC PORTAL ---------- */
+
+.portal-container {
+    position: absolute;
+
+    z-index: 4;
+
+    left: 50%;
+    bottom: 24px;
+
+    width: 64px;
+    height: 64px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+
+.portal-ring {
+    position: absolute;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(0,232,255,0.9);
+
+    box-shadow:
+        0 0 8px #00e8ff,
+        0 0 20px rgba(0,232,255,0.7),
+        0 0 45px rgba(0,232,255,0.35);
+
+    animation:
+        portalRotate 5s linear infinite,
+        portalPulse 2.5s ease-in-out infinite;
+}
+
+
+.portal-ring::before,
+.portal-ring::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(119,245,255,0.7);
+}
+
+
+.portal-ring::after {
+    inset: 14px;
+
+    border-color: rgba(214,168,79,0.55);
+
+    transform: rotate(45deg);
+}
+
+
+.portal-core {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px #00e8ff,
+        0 0 35px #00e8ff;
+
+    animation: corePulse 1.8s ease-in-out infinite;
+}
+
+
+@keyframes portalRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes portalPulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 8px #00e8ff,
+            0 0 20px rgba(0,232,255,0.6),
+            0 0 40px rgba(0,232,255,0.25);
+    }
+
+    50% {
+        box-shadow:
+            0 0 12px #00e8ff,
+            0 0 35px rgba(0,232,255,0.9),
+            0 0 70px rgba(0,232,255,0.4);
+    }
+}
+
+
+@keyframes corePulse {
+
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+
+/* ---------- EMPTY NEXT SECTION ---------- */
+
+#about {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(0,232,255,0.04),
+            transparent 30%
+        ),
+        #050608;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding-top: 22px;
+    }
+
+    .nav-button {
+        padding: 9px 18px;
+        font-size: 0.65rem;
+    }
+
+    .hero-content {
+        padding-bottom: 80px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.7rem, 12vw, 5rem);
+        letter-spacing: -1px;
+    }
+
+    .hero-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .hero-button {
+        padding: 15px 28px;
+        font-size: 0.7rem;
+    }
+
+    .portal-container {
+        bottom: 18px;
+    }
+
+    }
 .about p{
     max-width:900px;
     margin:auto;
