@@ -1324,3 +1324,28 @@ iframe {
         margin-bottom: 0 !important;
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 18
+   FINAL PORTAL — PREVENT CONTENT OVERLAP
+   ========================================================= */
+
+.final-portal {
+    position: relative !important;
+    z-index: 1 !important;
+    clear: both !important;
+    margin-top: 60px !important;
+    margin-bottom: 40px !important;
+}
+
+.roadmap,
+.roadmap-item,
+.features,
+.feature-card {
+    position: relative;
+    z-index: 2;
+}
+
+.portal-container {
+    position: relative !important;
+    z-index: 1 !important;
+}
