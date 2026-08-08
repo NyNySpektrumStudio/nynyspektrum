@@ -1241,3 +1241,36 @@ iframe {
         margin-top: 0 !important;
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 15
+   MOBILE HERO COMPOSITION BALANCE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Bring the portal upward toward the main CTA */
+    .final-portal {
+        margin-top: -95px !important;
+        margin-bottom: 5px !important;
+        height: 125px !important;
+    }
+
+    /* Give the next section a little breathing room */
+    #about {
+        padding-top: 18px !important;
+    }
+
+    /* Keep the portal itself untouched and centered */
+    .final-portal .portal-container {
+        position: relative !important;
+        width: 92px !important;
+        height: 92px !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    /* Keep Explore directly beneath the core */
+    .final-portal .portal-core span {
+        top: 44px !important;
+    }
+}
