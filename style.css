@@ -995,4 +995,30 @@ iframe {
         overflow-wrap: break-word;
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 10
+   CENTER HERO EXPLORE PORTAL ON MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero .portal-container {
+        position: absolute;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+
+        width: 92px;
+        height: 92px;
+
+        bottom: 35px;
+        margin: 0;
+    }
+
+    .hero .portal-container .portal-ring,
+    .hero .portal-container .portal-core {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
    
