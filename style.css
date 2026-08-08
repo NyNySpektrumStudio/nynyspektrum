@@ -1021,4 +1021,53 @@ iframe {
         transform: translateX(-50%);
     }
 }
+/* =========================================================
+   NyNySpektrum™ — STEP 11
+   ALIGN EXPLORE PORTAL RINGS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero .portal-container .portal-ring {
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+    }
+
+    /* OUTER RING — 88px */
+    .hero .portal-container .portal-ring-outer {
+        width: 88px;
+        height: 88px;
+        margin-left: -44px;
+        margin-top: -44px;
+    }
+
+    /* MIDDLE RING — 68px */
+    .hero .portal-container .portal-ring-middle {
+        width: 68px;
+        height: 68px;
+        margin-left: -34px;
+        margin-top: -34px;
+    }
+
+    /* INNER RING — 48px */
+    .hero .portal-container .portal-ring-inner {
+        width: 48px;
+        height: 48px;
+        margin-left: -24px;
+        margin-top: -24px;
+    }
+
+    /* Keep the central core centered */
+    .hero .portal-container .portal-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 28px;
+        height: 28px;
+        margin-left: -14px;
+        margin-top: -14px;
+    }
+}
    
