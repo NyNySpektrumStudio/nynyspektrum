@@ -1,14 +1,25 @@
-/* =========================================================
-   NyNySpektrum™
-   Creative Technology Studio
-   Engineering Tomorrow's Digital Reality.
-   FOUNDATION
-   ========================================================= */
+/*
+  NyNySpektrum™
+  Clean rebuild — single source of truth
+  No patch-stack / no positional portal hacks
+*/
+
+:root {
+    --bg: #030609;
+    --panel: rgba(7, 12, 18, 0.82);
+    --text: #f4f8ff;
+    --muted: rgba(244, 248, 255, 0.78);
+    --cyan: #00e8ff;
+    --pink: #ff4fd8;
+    --gold: #ffdc78;
+    --line: rgba(0, 232, 255, 0.20);
+    --max: 1180px;
+}
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -18,19 +29,13 @@ html {
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
-    margin: 0;
-    background: #030609;
-    color: #f4f8ff;
-    font-family: "Poppins", sans-serif;
+    width: 100%;
     overflow-x: hidden;
-}
-
-img,
-video {
-    max-width: 100%;
-    height: auto;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
 }
 
 a {
@@ -38,64 +43,684 @@ a {
     text-decoration: none;
 }
 
-button {
-    font-family: inherit;
-}
-
 section,
-header,
-footer,
 main,
-nav {
+nav,
+footer {
+    width: 100%;
     max-width: 100%;
 }
 
-/* ---------- HERO ---------- */
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(0, 232, 255, 0.08),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 15% 75%,
-            rgba(110, 10, 40, 0.35),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(68, 37, 20, 0.30),
-            transparent 32%
-        ),
-        #050608;
+.background-layer,
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
 }
 
-
-/* =========================================================
-   CINEMATIC BACKGROUND
-   NyNySpektrum™
-   ========================================================= */
-
 .background-layer {
-    position: absolute;
-    inset: -12%;
     z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-
     background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(0, 238, 255, 0.13) 0%,
-            rgba(0, 160, 210, 0.07) 18%,
-            transparent 48%
-        ),
+        radial-gradient(circle at 50% 18%, rgba(0, 232, 255, .10), transparent 28%),
+        radial-gradient(circle at 8% 34%, rgba(120, 10, 45, .22), transparent 32%),
+        radial-gradient(circle at 90% 70%, rgba(0, 170, 255, .07), transparent 30%),
+        linear-gradient(135deg, #010306, #05080d 45%, #000204);
+    animation: atmosphere 18s ease-in-out infinite alternate;
+}
+
+.background-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+    background-size: 70px 70px;
+    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+}
+
+.particles {
+    z-index: 0;
+    opacity: .22;
+    background-image: radial-gradient(circle, rgba(255,255,255,.75) 1px, transparent 1.5px);
+    background-size: 120px 120px;
+    animation: particlesMove 20s linear infinite;
+}
+
+.site-nav,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+.site-nav {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.logo,
+.footer-logo {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255,255,255,.45), 0 0 24px rgba(0,232,255,.35);
+}
+
+.logo {
+    font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: rgba(244,248,255,.82);
+    font-family: "Orbitron", sans-serif;
+    font-size: .72rem;
+    letter-spacing: 1.5px;
+    transition: color .25s ease, text-shadow .25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: #fff;
+    text-shadow: 0 0 12px var(--cyan);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    width: min(var(--max), calc(100% - 48px));
+    min-height: calc(100vh - 88px);
+    margin: 0 auto;
+    padding: 56px 0 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-kicker,
+.section-kicker {
+    font-family: "Orbitron", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--cyan);
+    text-shadow: 0 0 12px rgba(0,232,255,.65);
+}
+
+.hero-kicker {
+    margin-bottom: 20px;
+    font-size: clamp(.65rem, 1.5vw, .9rem);
+}
+
+.hero h1 {
+    max-width: 1000px;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2.7rem, 7vw, 6.7rem);
+    line-height: .98;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #fff;
+    text-shadow:
+        0 0 6px rgba(255,255,255,.95),
+        0 0 18px rgba(255,255,255,.70),
+        0 0 38px rgba(0,240,255,.55),
+        0 0 70px rgba(0,210,255,.30);
+    animation: titleGlow 4s ease-in-out infinite alternate;
+}
+
+.hero h1 span {
+    display: block;
+    color: #fff;
+}
+
+.hero-text {
+    width: min(760px, 100%);
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: clamp(.9rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    text-shadow: 0 0 12px rgba(0,210,255,.10);
+}
+
+.hero-actions {
+    margin-top: 34px;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 38px;
+    border: 1px solid rgba(0,232,255,.9);
+    border-radius: 999px;
+    background: var(--pink);
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow:
+        0 0 10px rgba(0,232,255,.55),
+        0 0 32px rgba(255,79,216,.25);
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+.hero-button:hover,
+.hero-button:focus-visible {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+    box-shadow:
+        0 0 16px rgba(0,232,255,.75),
+        0 0 42px rgba(255,79,216,.45);
+}
+
+/* ================= PORTAL SYSTEM =================
+   IMPORTANT: portals use normal document flow.
+   Nothing is translated vertically to overlap other content.
+*/
+
+.portal-container {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    flex: 0 0 auto;
+    display: block;
+}
+
+.hero-portal {
+    margin-top: 68px;
+}
+
+.portal-ring,
+.portal-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portal-ring-outer {
+    width: 104px;
+    height: 104px;
+    border: 2px solid rgba(0,232,255,.88);
+    box-shadow:
+        0 0 12px rgba(0,232,255,.85),
+        0 0 30px rgba(0,232,255,.48),
+        0 0 55px rgba(0,232,255,.22);
+    animation: portalOuterPulse 3s ease-in-out infinite;
+}
+
+.portal-ring-middle {
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(119,245,255,.85);
+    box-shadow:
+        inset 0 0 15px rgba(0,232,255,.45),
+        0 0 20px rgba(0,232,255,.38);
+    animation: portalRotate 8s linear infinite;
+}
+
+.portal-ring-inner {
+    width: 56px;
+    height: 56px;
+    border: 2px solid rgba(255,220,120,.78);
+    box-shadow:
+        0 0 12px rgba(255,240,180,.65),
+        inset 0 0 14px rgba(0,232,255,.35);
+    animation: portalInnerPulse 2.5s ease-in-out infinite;
+}
+
+.portal-core {
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,.96);
+    box-shadow:
+        0 0 10px #fff,
+        0 0 22px rgba(0,232,255,.9),
+        0 0 42px rgba(0,232,255,.55);
+    animation: corePulse 2s ease-in-out infinite;
+}
+
+.portal-core span {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    width: 150px;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-shadow: 0 0 8px #fff, 0 0 18px rgba(0,232,255,.75);
+}
+
+/* ================= SHARED SECTIONS ================= */
+
+.section-shell {
+    width: min(var(--max), calc(100% - 48px));
+    margin: 0 auto;
+    padding: 120px 0;
+}
+
+.section-heading {
+    text-align: center;
+}
+
+.section-kicker {
+    font-size: .72rem;
+    margin-bottom: 16px;
+}
+
+.section-heading h2 {
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 800;
+    text-shadow:
+        0 0 7px rgba(255,255,255,.8),
+        0 0 18px rgba(0,225,255,.45);
+}
+
+.section-heading h2 span {
+    display: block;
+}
+
+.section-text {
+    width: min(900px, 100%);
+    margin: 34px auto 0;
+    color: #d8dce3;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.9;
+    text-align: center;
+}
+
+/* ================= SECTION PORTALS ================= */
+
+.section-portal {
+    width: fit-content;
+    margin: 52px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    font-size: .78rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(0,232,255,.65);
+}
+
+.portal-mini {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 14px rgba(0,232,255,.65);
+    position: relative;
+    animation: portalOuterPulse 2.6s ease-in-out infinite;
+}
+
+.portal-mini::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,232,255,.85);
+}
+
+/* ================= SERVICES ================= */
+
+.services {
+    padding-top: 80px;
+}
+
+.service-grid {
+    margin-top: 58px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.service-card {
+    min-width: 0;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(11,19,28,.88), rgba(4,8,13,.78));
+    box-shadow: inset 0 0 25px rgba(0,232,255,.025), 0 14px 35px rgba(0,0,0,.25);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,232,255,.55);
+    box-shadow: 0 0 28px rgba(0,232,255,.10);
+}
+
+.service-number,
+.roadmap-number {
+    color: var(--cyan);
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 2px;
+}
+
+.service-number {
+    font-size: .75rem;
+    margin-bottom: 18px;
+}
+
+.service-card h3 {
+    color: #fff;
+    font-size: 1.18rem;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #cbd1da;
+    line-height: 1.7;
+    font-size: .95rem;
+}
+
+/* ================= ROADMAP ================= */
+
+.roadmap {
+    padding-top: 100px;
+}
+
+.roadmap-list {
+    width: min(900px, 100%);
+    margin: 60px auto 0;
+    display: grid;
+    gap: 18px;
+}
+
+.roadmap-item {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 26px;
+    border: 1px solid rgba(0,232,255,.14);
+    border-radius: 18px;
+    background: rgba(5,10,16,.78);
+}
+
+.roadmap-number {
+    padding-top: 2px;
+    font-size: .75rem;
+}
+
+.roadmap-item h3 {
+    color: #fff;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.roadmap-item p {
+    color: #cbd1da;
+    line-height: 1.7;
+    font-size: .95rem;
+}
+
+/* FINAL PORTAL IS AFTER THE ROADMAP LIST.
+   It has its own space and NEVER overlaps roadmap content. */
+
+.final-portal {
+    min-height: 190px;
+    margin-top: 58px;
+    padding: 25px 0 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.final-portal .portal-container {
+    width: 104px;
+    height: 104px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 30px;
+    padding: 52px 24px;
+    text-align: center;
+    background: rgba(7,7,18,.92);
+    border-top: 1px solid rgba(0,232,255,.08);
+}
+
+.footer-logo {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+footer p {
+    color: #c1c6cf;
+}
+
+footer .copyright {
+    margin-top: 8px;
+    font-size: .92rem;
+}
+
+/* ================= MOTION ================= */
+
+@keyframes atmosphere {
+    from { transform: scale(1); }
+    to { transform: scale(1.06); }
+}
+
+@keyframes particlesMove {
+    from { background-position: 0 0; }
+    to { background-position: 120px 120px; }
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow:
+            0 0 6px rgba(255,255,255,.85),
+            0 0 18px rgba(255,255,255,.60),
+            0 0 36px rgba(0,240,255,.45),
+            0 0 65px rgba(0,210,255,.25);
+    }
+    to {
+        text-shadow:
+            0 0 8px rgba(255,255,255,1),
+            0 0 22px rgba(255,255,255,.85),
+            0 0 46px rgba(0,240,255,.75),
+            0 0 82px rgba(0,210,255,.45);
+    }
+}
+
+@keyframes portalOuterPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(.96); opacity: .76; }
+    50% { transform: translate(-50%, -50%) scale(1.04); opacity: 1; }
+}
+
+@keyframes portalRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes portalInnerPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(.92) rotate(0deg); opacity: .72; }
+    50% { transform: translate(-50%, -50%) scale(1.04) rotate(45deg); opacity: 1; }
+}
+
+@keyframes corePulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(.86); opacity: .82; }
+    50% { transform: translate(-50%, -50%) scale(1.10); opacity: 1; }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+    .site-nav {
+        width: min(100% - 28px, var(--max));
+        padding: 20px 0 12px;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px 20px;
+    }
+
+    .nav-links a {
+        font-size: .62rem;
+    }
+
+    .hero {
+        width: min(100% - 28px, var(--max));
+        min-height: auto;
+        padding: 54px 0 100px;
+    }
+
+    .hero-kicker {
+        font-size: .58rem;
+        letter-spacing: 2.5px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.35rem, 12vw, 4.5rem);
+        letter-spacing: -1.2px;
+        line-height: 1;
+    }
+
+    .hero-text {
+        font-size: .92rem;
+        line-height: 1.72;
+    }
+
+    .hero-button {
+        min-height: 52px;
+        padding: 0 28px;
+        font-size: .67rem;
+        letter-spacing: 1.6px;
+    }
+
+    .hero-portal {
+        margin-top: 58px;
+    }
+
+    .section-shell {
+        width: min(100% - 28px, var(--max));
+        padding: 90px 0;
+    }
+
+    .section-kicker {
+        font-size: .62rem;
+        letter-spacing: 2.5px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 10vw, 3.2rem);
+        line-height: 1.08;
+    }
+
+    .section-text {
+        font-size: .98rem;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        margin-top: 42px;
+        gap: 16px;
+    }
+
+    .service-card {
+        padding: 24px;
+    }
+
+    .service-card h3 {
+        font-size: 1.12rem;
+    }
+
+    .roadmap-list {
+        margin-top: 42px;
+        gap: 14px;
+    }
+
+    .roadmap-item {
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: 14px;
+        padding: 21px 18px;
+    }
+
+    .roadmap-item h3 {
+        font-size: 1.02rem;
+    }
+
+    .roadmap-item p {
+        font-size: .9rem;
+        line-height: 1.65;
+    }
+
+    .final-portal {
+        min-height: 190px;
+        margin-top: 48px;
+        padding: 20px 0 48px;
+    }
+
+    footer {
+        padding: 42px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
         radial-gradient(
             circle at 8% 25%,
             rgba(0, 110, 255, 0.10) 0%,
